@@ -9,5 +9,5 @@ def homepage():
 
 
 @app.route("/about")
-def about():
+def aboutpage():
     return render_template("about.html")
