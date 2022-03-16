@@ -1,4 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, abort
+from jinja2.exceptions import TemplateNotFound
+
 
 app = Flask(__name__)
 
@@ -8,6 +10,9 @@ def homepage():
     return render_template("homepage.html")
 
 
-@app.route("/about")
-def aboutpage():
-    return render_template("about.html")
+@app.route("/<page>")
+def page(page):
+    try:
+        return render_template(f"{page}.html")
+    except TemplateNotFound:
+        abort(404)
