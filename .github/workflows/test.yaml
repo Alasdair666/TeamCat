@@ -1,0 +1,30 @@
+name: Testing the website
+
+on:                  
+  pull_request:                         
+    types: [ opened, synchronize, reopened, ready_for_review ]
+    branches:                                         
+      - main      
+  push:
+    branches:
+      - main
+                                                                                                                      
+env:      
+  FLASK_APP: main:app                                                                      
+  FLASK_ENV: development
+                                                           
+jobs:                                                                                                                  
+  pytest:                                                                                              
+    runs-on: ubuntu-latest                                                                                             
+    steps:                                             
+    - name: Checkout the code                   
+      uses: actions/checkout@v2                                       
+    
+    - name: Install poetry
+      run: pip3 install poetry
+    
+    - name: Install the dependencies
+      run: poetry install
+
+    - name: Run tests
+      run: poetry run pytest
