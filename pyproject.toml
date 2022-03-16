@@ -9,7 +9,7 @@ authors = ["Pedro Rodrigues <Pedro.Rodrigues@inait.ai>",
 
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.8"
 Flask = "^2.0.3"
 
 [tool.poetry.dev-dependencies]
