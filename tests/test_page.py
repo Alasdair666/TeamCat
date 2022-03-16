@@ -42,6 +42,17 @@ def test_dietpage_mentions_diets(client):
     assert b"diets" in resp.data.lower()
 
 
+# Mating and Reproduction page
+def test_access_mating_reproduction_page(client):
+    resp = client.get("/mating-reproduction")
+    assert resp.status_code == 200
+
+
+def test_mating_reproduction_page_mentions_kittens(client):
+    resp = client.get("/mating-reproduction")
+    assert b"kittens" in resp.data.lower()
+
+
 # 404 Non existing
 def test_access_non_existing_page(client):
     resp = client.get("/no_page")
