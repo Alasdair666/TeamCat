@@ -18,7 +18,16 @@ def test_aboutpage_mentions_one_of_us(client):
     assert b"qiyang" in resp.data.lower()
 
 
-def test_access_non_existinf_page(client):
+def test_access_contactpage(client):
+    resp = client.get("/contact")
+    assert resp.status_code == 200
+
+
+def test_contactpage_has_mailto(client):
+    resp = client.get("/contact")
+    assert b"mailto:" in resp.data.lower()
+
+
 def test_access_non_existing_page(client):
     resp = client.get("/no_page")
     assert resp.status_code == 404
