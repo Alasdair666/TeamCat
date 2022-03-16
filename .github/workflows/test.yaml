@@ -26,5 +26,8 @@ jobs:
     - name: Install the dependencies
       run: poetry install
 
+    - name: Linting check
+      run: poetry run black --check .
+
     - name: Run tests
       run: poetry run pytest
